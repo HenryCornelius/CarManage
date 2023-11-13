@@ -1,0 +1,36 @@
+{% if create %}
+    <form action="/car/new" method="post">
+    <fieldset>
+        <legend>Nouvelle voiture</legend>
+{% else %}
+    <form action="/car/{{car.id}}/edit" method="post">
+    <fieldset>
+        <legend>{{car.brand.name}} {{ car.name }}</legend>
+{% endif %}
+        <div class="form-group">
+        <label for="{{ form.brand.vars.id }}" class="form-label mt-4">Marque</label>
+            {{ form_widget(form.brand, {'attr': {'class': 'form-select'}}) }}
+        </div>
+        <div class="form-group">
+            <label for="name" class="col-sm-2 col-form-label">Modèle</label>
+            <input type="text" class="form-control" id="name" name="{{ field_name(form.name) }}" value="{{ field_value(form.name) }}" placeholder="{{ field_label(form.name) }}">
+        </div>
+        <div class="form-group">
+            <label for="year" class="col-sm-2 col-form-label">Année</label>
+            <input type="text" class="form-control" id="year" name="{{ field_name(form.year) }}" value="{{ field_value(form.year) }}" placeholder="{{ field_label(form.year) }}">
+        </div>
+        <div class="form-group">
+            <label for="color" class="col-sm-2 col-form-label">Couleur</label>
+            <input type="text" class="form-control" id="color" name="{{ field_name(form.color) }}" value="{{ field_value(form.color) }}" placeholder="{{ field_label(form.color) }}">
+        </div>
+        <div class="form-group">
+            <label for="places" class="col-sm-2 col-form-label">Places assises</label>
+            <input type="number" class="form-control" id="places" name="{{ field_name(form.placesNumber) }}" value={{ field_value(form.placesNumber) }} placeholder="{{ field_label(form.placesNumber) }}">
+        </div>
+        <div class="form-group">
+            <label for="fuel" class="col-sm-2 col-form-label">Carburant</label>
+            <input type="text" class="form-control" id="fuel" name="{{ field_name(form.fuel) }}" value="{{ field_value(form.fuel) }}" placeholder="{{ field_label(form.fuel) }}">
+        </div>
+    </fieldset>
+    <button class="btn btn-primary mt-3">{{ button_label|default('Enregistrer') }}</button>
+</form>
