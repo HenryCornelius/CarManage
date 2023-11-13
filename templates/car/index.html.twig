@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes voitures{% endblock %}
+
+{% block body %}
+
+    <div class="container mt-4">
+        <h1>Mes voitures</h1>
+        
+        {% for car in cars %}
+            <div class="card border-primary mb-3" style="max-width: 20rem;">
+                <div class="card-header">{{car.brand.name}}</div>
+                <div class="card-body">
+                    <h4 class="card-title">{{car.brand.name}} {{car.name}}</h4>
+                    <p class="card-text">
+                        {{car.year}} / {{car.color}}
+                        </br>
+                        {{car.placesNumber}} places / {{car.fuel}}
+                    </p>
+                    <div class="d-flex justify-content-end">
+                        <a class="btn btn-warning mx-1" href="">Modifier</a>
+                        <a class="btn btn-danger mx-1" href="">Supprimer</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
